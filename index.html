@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Công cụ Thần số học</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div id="top-section-layout">
+        <header>
+          <h1>🔮 Thần số học</h1>
+          <p>Donate cho tôi với nhé.</p>
+          <p>Ngân hàng: <strong>MB Bank</strong></p>
+          <p>Số tài khoản: <strong>070365689999</strong></p>
+        </header>
+
+        <div id="input-section-wrapper">
+          <div class="input-header">
+            <h3>Nhập thông tin của bạn</h3>
+            <div class="share-container">
+              <span
+                id="share-status-message"
+                class="share-status-message"
+              ></span>
+              <button
+                id="share-btn"
+                class="share-btn"
+                title="Chia sẻ kết quả này"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-share-2"
+                >
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="input-layout">
+            <div class="input-group">
+              <label for="name">Họ và tên:</label>
+              <input type="text" id="name" placeholder="Ví dụ: NGUYEN VAN A" />
+            </div>
+            <div class="input-group">
+              <label for="dob">Ngày tháng năm sinh:</label>
+              <input type="text" id="dob" placeholder="dd-mm-yyyy" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div id="results-layout" class="hidden">
+          <div class="results-column left-column">
+            <div id="overview-and-chart" class="result-block">
+              <div id="chart-container">
+                <h3>Biểu đồ tổng hợp</h3>
+                <div class="numerology-chart" id="numerology-chart">
+                  <div class="chart-cell" data-number="3"></div>
+                  <div class="chart-cell" data-number="6"></div>
+                  <div class="chart-cell" data-number="9"></div>
+                  <div class="chart-cell" data-number="2"></div>
+                  <div class="chart-cell" data-number="5"></div>
+                  <div class="chart-cell" data-number="8"></div>
+                  <div class="chart-cell" data-number="1"></div>
+                  <div class="chart-cell" data-number="4"></div>
+                  <div class="chart-cell" data-number="7"></div>
+                </div>
+              </div>
+
+              <div id="results">
+                <h3>Các chỉ số tổng quan</h3>
+                <div class="core-numbers-summary">
+                  <div class="life-path-container">
+                    <h3>Số chủ đạo</h3>
+                    <p id="life-path-number">--</p>
+                  </div>
+                  <div class="core-numbers-grid">
+                    <div class="result-box">
+                      <h3>Số sứ mệnh</h3>
+                      <p id="destiny-number">--</p>
+                    </div>
+                    <div class="result-box">
+                      <h3>Số nhân cách</h3>
+                      <p id="personality-number">--</p>
+                    </div>
+                    <div class="result-box">
+                      <h3>Số linh hồn</h3>
+                      <p id="soul-urge-number">--</p>
+                    </div>
+                    <div class="result-box">
+                      <h3>Số thái độ</h3>
+                      <p id="attitude-number">--</p>
+                    </div>
+                    <div class="result-box">
+                      <h3>Số trưởng thành</h3>
+                      <p id="maturity-number">--</p>
+                    </div>
+                    <div class="result-box">
+                      <h3>Chu kỳ năm</h3>
+                      <p id="personal-year">--</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="reports-section" class="hidden">
+                <div class="report-container">
+                  <div class="report-card">
+                    <div class="report-header">
+                      <h3>Lá số Ngày</h3>
+                      <span
+                        class="report-number"
+                        id="personal-day-number"
+                      ></span>
+                    </div>
+                    <p id="personal-day-meaning"></p>
+                  </div>
+                  <div class="report-card">
+                    <div class="report-header">
+                      <h3>Lá số Tháng</h3>
+                      <span
+                        class="report-number"
+                        id="personal-month-number"
+                      ></span>
+                    </div>
+                    <p id="personal-month-meaning"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-column right-column">
+            <div id="details-block" class="result-block">
+              <div id="scrollable-content">
+                <div id="arrows-container" class="details-section">
+                  <h3>Các Mũi tên trong Biểu đồ</h3>
+                  <div id="chart-arrows" class="chart-arrows"></div>
+                </div>
+
+                <h3>Luận giải chi tiết các chỉ số</h3>
+                <div id="numerology-details" class="details-section"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="bottom-sections" class="hidden">
+          <div
+            id="karmic-debt-section"
+            class="result-block details-section hidden"
+          >
+            <h3>Con số nợ nghiệp</h3>
+            <div id="karmic-debt-list"></div>
+          </div>
+
+          <div
+            id="pyramid-container"
+            class="result-block details-section hidden"
+          >
+            <h3>Kim tự tháp cuộc đời</h3>
+            <p class="pyramid-intro">
+              Kim tự tháp thể hiện bốn đỉnh cao quan trọng trong cuộc đời bạn,
+              tương ứng với bốn giai đoạn thử thách và thành tựu lớn. Các đỉnh
+              này được tính toán từ các con số trong ngày sinh của bạn.
+            </p>
+            <div class="pyramid-grid">
+              <div class="pyramid-row pyramid-peak-4">
+                <div class="pyramid-cell">
+                  <span id="pyramid-peak-4" class="pyramid-number"></span>
+                  <span class="pyramid-label"
+                    >Đỉnh 4 (tuổi <span id="pyramid-age-4"></span>)</span
+                  >
+                </div>
+              </div>
+
+              <div class="pyramid-row pyramid-peak-2-3">
+                <div class="pyramid-cell">
+                  <span id="pyramid-peak-3" class="pyramid-number"></span>
+                  <span class="pyramid-label"
+                    >Đỉnh 3 (tuổi <span id="pyramid-age-3"></span>)</span
+                  >
+                </div>
+                <div class="pyramid-cell">
+                  <span id="pyramid-peak-2" class="pyramid-number"></span>
+                  <span class="pyramid-label"
+                    >Đỉnh 2 (tuổi <span id="pyramid-age-2"></span>)</span
+                  >
+                </div>
+              </div>
+
+              <div class="pyramid-row pyramid-peak-1">
+                <div class="pyramid-cell">
+                  <span id="pyramid-peak-1" class="pyramid-number"></span>
+                  <span class="pyramid-label"
+                    >Đỉnh 1 (tuổi <span id="pyramid-age-1"></span>)</span
+                  >
+                </div>
+              </div>
+
+              <div class="pyramid-row pyramid-base">
+                <div class="pyramid-cell">
+                  <span
+                    id="pyramid-base-month"
+                    class="pyramid-number base"
+                  ></span>
+                  <span class="pyramid-label">Tháng sinh</span>
+                </div>
+                <div class="pyramid-cell">
+                  <span
+                    id="pyramid-base-day"
+                    class="pyramid-number base"
+                  ></span>
+                  <span class="pyramid-label">Ngày sinh</span>
+                </div>
+                <div class="pyramid-cell">
+                  <span
+                    id="pyramid-base-year"
+                    class="pyramid-number base"
+                  ></span>
+                  <span class="pyramid-label">Năm sinh</span>
+                </div>
+              </div>
+            </div>
+            <div id="pyramid-meanings" class="pyramid-meanings"></div>
+          </div>
+
+          <div
+            id="planes-of-expression-container"
+            class="result-block details-section hidden"
+          >
+            <h3>Chỉ số Năng lực tiếp cận (Planes of Expression)</h3>
+            <div id="planes-of-expression-details"></div>
+          </div>
+
+          <div
+            id="personal-year-cycle-container"
+            class="result-block details-section hidden"
+          >
+            <h3>Luận giải chi tiết chu kỳ năm cá nhân</h3>
+            <div id="personal-year-cycle-details"></div>
+          </div>
+
+          <div
+            id="compatibility-section"
+            class="result-block details-section hidden"
+          >
+            <h3>Phân tích Tương hợp với bạn đời</h3>
+            <div class="form-group">
+              <label for="partner-dob">Ngày sinh của bạn ấy là:</label>
+              <input
+                type="text"
+                id="partner-dob"
+                class="input-field"
+                placeholder="dd-mm-yyyy"
+              />
+            </div>
+            <div id="compatibility-results" class="result-block hidden"></div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <p>
+          Được tạo ra bởi <a href="https://fb.com/hoan.glad">Hoàn Phạm</a> với
+          ❤️ để khám phá sức mạnh của Thần số học.
+        </p>
+      </footer>
+    </div>
+
+    <button id="chat-toggle-btn" title="Hỗ trợ đặt tên cho bé">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-message-square"
+      >
+        <path
+          d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+        ></path>
+      </svg>
+    </button>
+    <div id="gemini-chat-container" class="chat-box hidden">
+      <div class="chat-header">
+        <h4>Trợ lý đặt tên</h4>
+        <button id="close-chat-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-x"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="chat-messages" id="chat-messages"></div>
+      <div class="chat-input-wrapper">
+        <input
+          type="text"
+          id="chat-input"
+          placeholder="Bạn muốn đặt tên cho bé trai hay bé gái?"
+        />
+        <button id="send-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-send"
+          >
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script type="module" src="firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
