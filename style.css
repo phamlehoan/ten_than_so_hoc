@@ -1,0 +1,852 @@
+/* ========================================= */
+/* Cài đặt toàn cục và Style chung           */
+/* ========================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f9;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 10px;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ========================================= */
+/* Bố cục chính                               */
+/* ========================================= */
+
+/* Bố cục 2 cột mới cho phần đầu trang */
+#top-section-layout {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+#top-section-layout header {
+  flex: 1;
+  text-align: left;
+}
+
+#top-section-layout #input-section-wrapper {
+  flex: 2;
+  margin-bottom: 0;
+}
+
+header h1 {
+  color: #4a69bd;
+  font-size: 2.5em;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+header p {
+  color: #666;
+  font-style: italic;
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Khối nhập liệu trên cùng */
+#input-section-wrapper {
+  background-color: #e9f0f6;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #dcdfe4;
+  text-align: left;
+}
+#input-section-wrapper h3 {
+  margin-top: 0;
+  color: #4a4a4a;
+  font-size: 1.1em;
+  border-bottom: 1px solid #dcdfe4;
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+}
+.input-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+.input-header h3 {
+  margin: 0;
+  color: #34495e;
+}
+.share-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.share-status-message {
+  font-size: 0.9em;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.share-status-message.success {
+  color: #27ae60;
+  opacity: 1;
+}
+.share-status-message.error {
+  color: #e74c3c;
+  opacity: 1;
+}
+.share-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+.share-btn:hover {
+  transform: scale(1.1);
+}
+.share-btn svg {
+  color: #4a5568;
+  width: 24px;
+  height: 24px;
+}
+.input-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.input-group {
+  text-align: left;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.9em;
+  color: #555;
+}
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.9em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.input-group input:focus {
+  border-color: #4a69bd;
+  box-shadow: 0 0 5px rgba(74, 105, 189, 0.5);
+  outline: none;
+}
+
+/* Bố cục 2 cột chính của phần kết quả */
+#results-layout {
+  display: flex;
+  gap: 15px;
+  align-items: stretch;
+}
+
+.results-column {
+  display: flex;
+  flex-direction: column;
+}
+.left-column {
+  flex: 0 0 400px;
+}
+.right-column {
+  flex: 1;
+}
+
+.result-block {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  transition: all 0.3s ease;
+}
+.result-block h3 {
+  margin-top: 0;
+}
+
+/* Căn chỉnh các khối trong cột trái */
+.left-column > .result-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+  height: 100%;
+}
+.right-column > h3 {
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #4a69bd;
+}
+
+/* Căn chỉnh khối luận giải và cuộn trang ở cột phải */
+#details-block {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#scrollable-content {
+  max-height: 750px;
+  overflow-y: auto;
+  padding-right: 15px;
+}
+
+#scrollable-content h3,
+.result-block h3 {
+  text-align: left;
+  margin-bottom: 10px;
+  color: #4a69bd;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+/* Căn chỉnh nội dung luận giải */
+#numerology-details h4 {
+  color: #555;
+  font-size: 1em;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+#numerology-details p {
+  text-align: justify;
+}
+
+/* Khối các mục ở cuối trang */
+#bottom-sections {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#bottom-sections .result-block {
+  text-align: left;
+}
+
+/* ========================================= */
+/* Cải thiện các phần tử bên trong          */
+/* ========================================= */
+.core-numbers-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.life-path-container {
+  text-align: center;
+  padding: 10px 20px;
+  background-color: #e6f7ff;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 123, 255, 0.2);
+}
+.life-path-container h3 {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  color: #007bff;
+  font-size: 1.1em;
+}
+
+.life-path-container p {
+  font-size: 2em;
+  font-weight: 700;
+  color: #007bff;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.core-numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.result-box {
+  text-align: center;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.result-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.result-box h3 {
+  font-size: 0.7em;
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #555;
+  border: none;
+  padding: 0;
+  text-align: center;
+}
+
+.result-box p {
+  font-weight: 700;
+  color: #28a745;
+  font-size: 1.2em;
+  margin: 0;
+}
+
+#chart-container {
+  text-align: center;
+}
+.numerology-chart {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+  background-color: #e8f0fe;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.chart-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.chart-cell:not(:empty) {
+  background-color: #4a69bd;
+  color: #fff;
+}
+
+.chart-arrows {
+  margin-top: 15px;
+  text-align: left;
+  font-size: 0.8em;
+}
+
+.arrow-found {
+  color: #28a745;
+}
+
+.arrow-missing {
+  color: #dc3545;
+}
+.details-section h3 {
+  font-size: 1.1em;
+}
+
+/* ========================================= */
+/* Responsive Design                         */
+/* ========================================= */
+@media (max-width: 992px) {
+  #top-section-layout,
+  #results-layout {
+    flex-direction: column;
+  }
+  .left-column {
+    flex: 1 1 auto;
+  }
+  #top-section-layout header {
+    flex: 1;
+    text-align: center;
+  }
+  /* Giảm khoảng cách giữa tiêu đề và phần nhập liệu */
+  #top-section-layout {
+    margin-bottom: 5px;
+  }
+  #top-section-layout #input-section-wrapper {
+    flex: 1;
+    width: 100%;
+  }
+  /* Chia lưới chỉ số thành 3 cột trên màn hình nhỏ */
+  .core-numbers-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #scrollable-content {
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+  }
+  .numerology-chart {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media (max-width: 480px) {
+  /* Đảm bảo khung nhập liệu vẫn 1 cột trên màn hình siêu nhỏ */
+  .input-layout {
+    grid-template-columns: 1fr;
+  }
+  .pyramid-row.pyramid-peak-2-3 {
+    gap: 20px;
+  }
+}
+
+/* ========================================= */
+/* Timeline Chu kỳ năm cá nhân              */
+/* ========================================= */
+.personal-year-intro {
+  text-align: center;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  background-color: #e9f0f6;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 5px solid #4a69bd;
+}
+
+.personal-year-intro .highlight-year {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #4a69bd;
+  padding: 0 5px;
+}
+
+.timeline-title {
+  text-align: center;
+  font-size: 1.3em;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.personal-year-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.personal-year-timeline::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #dcdfe4;
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 40px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 34px;
+  height: 34px;
+  background-color: #fff;
+  border: 4px solid #4a69bd;
+  border-radius: 50%;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.timeline-item.current-year .timeline-dot {
+  background-color: #ffc107;
+  border-color: #e6a700;
+  transform: scale(1.1);
+}
+
+.timeline-content {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px;
+  position: relative;
+}
+
+.timeline-year-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.year-label {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #4a69bd;
+}
+
+.personal-year-badge {
+  background-color: #4a69bd;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.timeline-item.current-year .personal-year-badge {
+  background-color: #e6a700;
+}
+
+.timeline-meaning {
+  font-size: 0.95em;
+  line-height: 1.6;
+  text-align: justify;
+  margin: 0;
+}
+
+/* ========================================= */
+/* Cải tiến Kim tự tháp cuộc đời            */
+/* ========================================= */
+.pyramid-intro {
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+  max-width: 600px;
+  margin: -10px auto 20px auto;
+}
+
+.pyramid-grid {
+  display: flex;
+  flex-direction: column-reverse; /* Đảo ngược để đáy ở dưới cùng */
+  align-items: center;
+  gap: 10px; /* Giảm khoảng cách giữa các hàng */
+  margin-top: 15px;
+  width: 100%;
+}
+
+.pyramid-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.pyramid-row.pyramid-peak-1 {
+  gap: 120px; /* Tạo khoảng trống để đặt đỉnh 1 vào giữa 2 ô đáy */
+}
+.pyramid-row.pyramid-peak-2-3 {
+  gap: 60px;
+}
+.pyramid-row.pyramid-base {
+  gap: 30px;
+  border-top: 2px dashed #e0e0e0;
+  padding-top: 20px;
+  margin-top: 10px;
+}
+
+.pyramid-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+  text-align: center;
+  position: relative;
+}
+
+.pyramid-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  height: 55px;
+  font-size: 1.4em;
+  font-weight: bold;
+  background-color: #4a69bd;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(74, 105, 189, 0.3);
+  z-index: 2;
+}
+
+.pyramid-number.base {
+  background-color: #6c757d; /* Màu xám cho tầng đáy */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 50px;
+  height: 50px;
+  font-size: 1.2em;
+}
+
+.pyramid-label {
+  margin-top: 8px;
+  font-size: 0.8em;
+  color: #555;
+  font-weight: 600;
+}
+
+.pyramid-meanings {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.pyramid-meanings h4 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#reports-section h2,
+#compatibility-section h2 {
+  text-align: center;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+#compatibility-section .form-group {
+  text-align: center;
+}
+
+.report-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.report-card {
+  flex: 1 1 45%;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  padding: 10px 20px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.report-header h3 {
+  margin: 0;
+  padding: 0;
+  color: #555;
+  font-size: 1em;
+}
+
+.report-number {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #007bff;
+}
+
+#reports-section #personal-day-meaning {
+  text-align: justify;
+}
+#reports-section #personal-month-meaning {
+  text-align: justify;
+}
+
+#compatibility-results {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+}
+
+#compatibility-results h4 {
+  margin-top: 0;
+  color: #444;
+}
+
+/* Đảm bảo responsive trên màn hình nhỏ */
+@media (max-width: 768px) {
+  .report-card {
+    flex-basis: 100%;
+  }
+}
+
+footer {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #e9f0f6;
+  border-radius: 8px;
+}
+
+/* ========================================= */
+/* CSS cho Chat Box */
+/* ========================================= */
+#chat-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #4a69bd;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: transform 0.2s;
+}
+#chat-toggle-btn:hover {
+  transform: scale(1.1);
+}
+#chat-toggle-btn svg {
+  width: 30px;
+  height: 30px;
+}
+
+#gemini-chat-container {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 350px;
+  height: 450px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #4a69bd;
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.chat-header h4 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+#close-chat-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+#close-chat-btn:hover {
+  opacity: 1;
+}
+
+.chat-messages {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-message {
+  padding: 10px;
+  border-radius: 15px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background-color: #e6f7ff;
+  align-self: flex-end;
+  border-top-right-radius: 0;
+}
+
+.gemini-message {
+  background-color: #f1f1f1;
+  align-self: flex-start;
+  border-top-left-radius: 0;
+}
+
+.chat-input-wrapper {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: white;
+}
+
+#chat-input {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px 15px;
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+#send-btn {
+  background-color: #4a69bd;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#send-btn:hover {
+  background-color: #385392;
+}
+
+#send-btn svg {
+  width: 20px;
+  height: 20px;
+}
